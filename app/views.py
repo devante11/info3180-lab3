@@ -20,13 +20,13 @@ def home():
     """Render website's home page."""
     return render_template('home.html')
 
-@app.route('/contact')
+@app.route('/contact', methods= ['GET','POST'])
 def contact():
     form = ContactForm()
-    if request.method == 'post':
+    if request.method == 'POST':
         if form.validate_on_submit():
-            msg = Message (request.form['Subject'], sender =(request.form['name']))
-            msg.body = request.form['Message']
+            msg = Message (request.form['subject'], sender =(request.form['name']))
+            msg.body = request.form['message']
             mail.send(msg)
             flash('your email has been succefully sent!','succes')
             return redirect(url_for('home'))
