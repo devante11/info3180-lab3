@@ -9,7 +9,7 @@
 
 <p>Fill in this form to contact the site owners.</p><br>
 
-<form method="POST" action="{{url_for('contact')}}">
+<form method="POST" action="{{url_for('/contact')}}">
 {{ form.csrf_token }}
 
     <p class ="label">{{ form.name.label }}</p> <strong>(Required)</strong><br>
@@ -64,7 +64,7 @@
     <p class ="label">{{ form.message.label }}</p> <strong>(Required)</strong><br>
     <p>Please enter the message you would like to send:</p>
     {{form.message}}
-    
+
     
     <ul>
     {% for error in form.message.errors %}
