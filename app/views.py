@@ -20,7 +20,7 @@ def home():
     """Render website's home page."""
     return render_template('home.html')
 
-@app.route("/contact")
+@app.route('/contact')
 def contact():
     form = ContactForm()
     if request.method == 'post':
@@ -31,7 +31,7 @@ def contact():
             flash('your email has been succefully sent!','succes')
             return redirect(url_for('home'))
 
-        return render_template('contact.html')
+        return render_template('contact.html'form = form)
 
 
 @app.route('/about/')
