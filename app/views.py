@@ -8,9 +8,7 @@ This file creates your application.
 from app import app
 from app import mail 
 from flask import render_template, request, redirect, url_for, flash
-from forms import ContactForm
-from flask_mail import Message
-from flask_wtf import FlaskForm 
+from flask_mail import Message 
 from app.forms import ContactForm 
 ###
 # Routing for your application.
@@ -26,7 +24,7 @@ def contact():
     form = ContactForm()
     if request.method == 'POST':
         if form.validate_on_submit():
-            msg = Message (request.form['subject'], sender =(request.form['name']))
+            msg = Message (request.form['subject'], sender =(request.form['name'], request.form['email'],recipients=['fedbccec02-fa0d57@inbox.mailtrap.io']))
             msg.body = request.form['message']
             mail.send(msg)
             flash('your email has been succefully sent!','succes')
