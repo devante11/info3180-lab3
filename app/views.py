@@ -10,7 +10,8 @@ from app import mail
 from flask import render_template, request, redirect, url_for, flash
 from forms import ContactForm
 from flask_mail import Message
-from flask_wtf import FlaskForm  
+from flask_wtf import FlaskForm 
+from app.forms import ContactForm 
 ###
 # Routing for your application.
 ###
@@ -30,8 +31,7 @@ def contact():
             mail.send(msg)
             flash('your email has been succefully sent!','succes')
             return redirect(url_for('home'))
-
-        return render_template('contact.html'form = form)
+        return render_template('/contact.html'form = form)
 
 
 @app.route('/about/')
