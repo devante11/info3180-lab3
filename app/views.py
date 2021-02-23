@@ -19,23 +19,24 @@ def home():
     """Render website's home page."""
     return render_template('home.html')
 
-@app.route('/contact', methods= ['GET','POST'])
+@app.route('/contact')
 def contact():
     form = ContactForm()
+
     if request.method == 'POST':
         if form.validate_on_submit():
-            msg = Message (request.form['subject'], sender =(request.form['name'], request.form['email'],recipients=['fedbccec02-fa0d57@inbox.mailtrap.io']))
+            msg = Message (request.form['subject'], sender =(request.form['name'], request.form['email']),recipients=['devante@inbox.mailtrap.io'])
             msg.body = request.form['message']
             mail.send(msg)
             flash('your email has been succefully sent!','succes')
             return redirect(url_for('home'))
-        return render_template('/contact.html'form = form)
+    return render_template('contact.html',form = form)
 
 
 @app.route('/about/')
 def about():
     """Render the website's about page."""
-    return render_template('about.html', name="Mary Jane")
+    return render_template('about.html', name="devante ")
 
 
 ###
